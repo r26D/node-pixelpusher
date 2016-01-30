@@ -220,6 +220,7 @@ Controller.prototype.refresh = function(strips) {
     // Format checking
     // and unchanged strip checking
     var updatedValidStrips = [];
+try {
     for (i = 0; i < strips.length; i++) {
         stripId = strips[i].stripId;
 
@@ -238,7 +239,11 @@ Controller.prototype.refresh = function(strips) {
     }
     strips = updatedValidStrips;
     that.currentStripData = strips;
-
+} catch(e) {
+    console.log('[PixelPusher] error', e, 'tried to read currentStripData ' + i + '/' + that.currentStripData.length);
+    // console.log('i=', i, 'currentStripData.length=', that.currentStripData.length, 'strips.length=', strips.length, 'stripId=',stripId, 'controllerNo=', that.params.pixelpusher.controllerNo);
+    // throw(e);
+}
     /*
     // -- PACKET STRUCTURE --
     typedef struct pixel _PACKED_ {

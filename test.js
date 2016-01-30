@@ -47,7 +47,7 @@ new PixelPusher().on('discover', function(controller) {
 
             // this sets random pixels on for each strip
             // it also does a different color for wach of the 4 strips
-            /*
+            
             if (i == 0 || i == 4){
                 s.getRandomPixel().setColor(255,0,0, 0.1);
             } else if (i == 1 || i == 5){
@@ -57,11 +57,11 @@ new PixelPusher().on('discover', function(controller) {
             } else if (i == 3 || i == 7){
                 s.getRandomPixel().setColor(100,0,55, 0.1);
             }
-            */
+            
 
             //s.getRandomPixel().setColor(255,0,0, 0.1);
             // set the whole strip blue
-            s.setStripColor(0,255,255, 0.01);
+            // s.setStripColor(0,255,255, 0.01);
 
             // render the strip data into the correct format for sending
             // to the pixel pusher controller
