@@ -34,7 +34,7 @@ new PixelPusher().on('discover', function(controller) {
     var PIXELS_PER_STRIP = controller.params.pixelpusher.pixelsPerStrip;
 
     // create a loop that will send commands to the PP to update the strip
-    var UPDATE_FREQUENCY_MILLIS = 30; // 15 is just faster than 60 FPS
+    var UPDATE_FREQUENCY_MILLIS = 45; // 15 is just faster than 60 FPS
 
 
     timer = setInterval(function() {
@@ -46,22 +46,17 @@ new PixelPusher().on('discover', function(controller) {
             var s = new PixelStrip(stripId,PIXELS_PER_STRIP);
 
             // this sets random pixels on for each strip
-            // it also does a different color for wach of the 4 strips
-            
-            if (i == 0 || i == 4){
-                s.getRandomPixel().setColor(255,0,0, 0.1);
-            } else if (i == 1 || i == 5){
-                s.getRandomPixel().setColor(0,255,0, 0.1);
-            } else if (i == 2 || i == 6){
-                s.getRandomPixel().setColor(0,0,255, 0.1);
-            } else if (i == 3 || i == 7){
-                s.getRandomPixel().setColor(100,0,55, 0.1);
-            }
-            
+            // it also does a different color for each of the 4 strips
 
-            //s.getRandomPixel().setColor(255,0,0, 0.1);
-            // set the whole strip blue
-            // s.setStripColor(0,255,255, 0.01);
+            if (i == 0 || i == 4){
+                s.getRandomPixel().setColor(255,0,0, 0.5);
+            } else if (i == 1 || i == 5){
+                s.getRandomPixel().setColor(0,255,0, 0.5);
+            } else if (i == 2 || i == 6){
+                s.getRandomPixel().setColor(0,0,255, 0.5);
+            } else if (i == 3 || i == 7){
+                s.getRandomPixel().setColor(100,0,55, 0.5);
+            }
 
             // render the strip data into the correct format for sending
             // to the pixel pusher controller
