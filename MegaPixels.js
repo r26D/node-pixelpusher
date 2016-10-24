@@ -39,7 +39,7 @@ new PixelPusher().on('discover', function(controller) {
 
     // create a loop that will send commands to the PP to update the strip
 
-    var UPDATE_FREQUENCY_MILLIS = 180; // 15 is just faster than 60 FPS
+    var UPDATE_FREQUENCY_MILLIS = 480; // 15 is just faster than 60 FPS
 
     // Calculate total number of pixels
 
@@ -47,7 +47,7 @@ new PixelPusher().on('discover', function(controller) {
     var RAINBOW_MULTIPLIER = 16;
 
     //This is the degrees of Hue between colors
-    var HUE_DEGREES = 30;
+    var HUE_DEGREES = 45;
 
 ///http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
 /**
@@ -115,7 +115,7 @@ function hsvToRgb(h, s, v){
     function makeHsvGradient() {
         var rainbow = [];
 
-        var s = [1.0] ;//[1, 0.75, 0.5, 0.25, 0,  0.25, 0.5 ,0.75, 1.0]
+        var s = [1.0];//[1, 0.75, 0.5, 0.25, 0,  0.25, 0.5 ,0.75, 1.0]
 
         for (var h = 0; h < 360; h = h + HUE_DEGREES) {
 
@@ -132,7 +132,7 @@ function hsvToRgb(h, s, v){
                 else {
                 */
                     if (h % 120 == 0) {
-                        for (var j = 0; j < NUM_PIXELS * 0  ; j = j + 1 ) {
+                        for (var j = 0; j < NUM_PIXELS * 0.125  ; j = j + 1 ) {
                             rainbow.push(hsvToRgb(h/360, s[i], 1.0));
                         }
                     }
