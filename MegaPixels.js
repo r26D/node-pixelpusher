@@ -47,7 +47,7 @@ new PixelPusher().on('discover', function(controller) {
     var RAINBOW_MULTIPLIER = 16;
 
     //This is the degrees of Hue between colors
-    var HUE_DEGREES = 45;
+    var HUE_DEGREES = 30 // 45;
 
 ///http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
 /**
