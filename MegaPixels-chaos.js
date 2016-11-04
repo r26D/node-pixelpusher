@@ -38,14 +38,14 @@ new PixelPusher().on('discover', function(controller) {
     var PIXELS_PER_STRIP = controller.params.pixelpusher.pixelsPerStrip;
 
     // create a loop that will send commands to the PP to update the strip
-    var UPDATE_FREQUENCY_MILLIS = 480; // 15 is just faster than 60 FPS
+    var UPDATE_FREQUENCY_MILLIS = 5000; // 15 is just faster than 60 FPS
 
     // Calculate total number of pixels
 
     NUM_PIXELS = NUM_STRIPS * PIXELS_PER_STRIP;
     //console.log("# of Pixels: ", NUM_PIXELS);
 
-    var RAINBOW_MULTIPLIER = 8; // Multiplied by NUM_PIXELS
+    var RAINBOW_MULTIPLIER = 4; // Multiplied by NUM_PIXELS
 
     //This is the degrees of Hue between colors
     var HUE_DEGREES = 30 // 45;
@@ -121,7 +121,7 @@ function hsvToRgb(h, s, v){
         for (var h = 0; h < 360; h = h + HUE_DEGREES) {
 
             for (var i = 0; i < s.length ; i = i + 1 ) {
-                //console.log("HSV", h/360, s[i], 1.0);
+                console.log("HSV", h/360, s[i], 1.0);
                 /*
                 if ( h < 180 && h > 90) {
                     //Over represent green
@@ -133,7 +133,7 @@ function hsvToRgb(h, s, v){
                 else {
                 */
                     if (h % 120 == 0) {
-                        for (var j = 0; j < NUM_PIXELS/2; j = j + 1 ) {
+                        for (var j = 0; j < NUM_PIXELS/7; j = j + 1 ) {
                           rainbow.push(hsvToRgb(h/360, s[i], 1.0));
                         }
                     }
@@ -144,7 +144,7 @@ function hsvToRgb(h, s, v){
               //  }
             }
         }
-        //console.log("Rainbow", rainbow);
+        console.log("Rainbow", rainbow);
         //rainbow.reverse();
         return(rainbow);
     }
@@ -173,10 +173,10 @@ function hsvToRgb(h, s, v){
         return(rainbow);
     }
     var color_seed = 0;
-    //var full_rainbow = makeColorGradient(0.3, 0.3, 0.3, 0, 2*Math.PI/3, 4*Math.PI/3, true);
-    var full_rainbow = makeHsvGradient();
-    //console.log(full_rainbow);
-    //console.log("Gradient Size", full_rainbow.length);
+    var full_rainbow = makeColorGradient(0.3, 0.3, 0.3, 0, 2*Math.PI/3, 4*Math.PI/3, true);
+    //var full_rainbow = makeHsvGradient();
+    console.log(full_rainbow);
+    console.log("Gradient Size", full_rainbow.length);
     timer = setInterval(function() {
         // console.log('Color Seed',color_seed);
         // create an array to hold the data for all the strips at once
@@ -197,8 +197,8 @@ function hsvToRgb(h, s, v){
 
                 var p = s.getPixel(i);
                 var rainbow_pixel = full_rainbow[color_index];
-                //console.log("Pixel ", color_index, rainbow_pixel, " Seed " + color_seed, " | Pos ", + position, " | Index " + color_index);
-                if (stripId == 1) {
+                console.log("Pixel ", color_index, rainbow_pixel, " Seed " + color_seed, " | Pos ", + position, " | Index " + color_index);
+                if (stripId == 4) {
                   p.setColor(rainbow_pixel[2], rainbow_pixel[1], rainbow_pixel[0]);
                 } else {
                   p.setColor(rainbow_pixel[0], rainbow_pixel[1], rainbow_pixel[2]);
