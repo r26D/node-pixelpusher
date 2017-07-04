@@ -59,7 +59,7 @@ new PixelPusher().on('discover', function(controller) {
             p4.setColor(255, 255, 255);
             p5.setColor(0, 0, 255);
             p6.setColor(0, 0, 255);
-            p7.setColor(0, 0, 255);
+            p7.setColor(255, 255, 255);
 
             // render the strip data into the correct format for sending
             // to the pixel pusher controller
